@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neon Auth Next.js Starter
+
+This project demonstrates how to build an application using Neon Auth for authentication with Next.js.
+
+**Neon Auth**
+
+- Complete authentication solution for your applications
+- Easy integration with Next.js
+
+This demo is built with:
+
+- [Neon](https://neon.tech)
+- [Neon Auth](https://neon.tech/docs/guides/neon-auth)
+- [Next.js](https://nextjs.org)
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v18 or newer)
+- A [Neon](https://neon.tech) account and project, with [Auth enabled](https://neon.tech/docs/guides/neon-auth)
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run the demo:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Create a Neon project and enable Auth in the Neon Console.
+2. Copy the Neon Auth URL.
+3. Install the dependencies:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Configure Environment Variables:**
+   Create a `.env` file in the project root with the following variable. Get it from the Neon console.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```env
+   # Neon Auth
+   NEON_AUTH_BASE_URL=your_neon_auth_url
+   ```
 
-## Learn More
+5. **Start the Development Server:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. **Build for Production:**
+   ```bash
+   npm run build
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application will be available at `http://localhost:3000`. You can now sign up, log in, and manage your session using Neon Auth.
 
-## Deploy on Vercel
+The `app/page.tsx` file will display the user's session information when logged in.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The `app/layout.tsx` file configures the `NeonAuthUIProvider` to manage authentication state across the app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The `app/api/auth/[...path]/route.ts` file sets up the API route handlers required for Neon Auth.
+
+The `lib/auth/client.ts` file initializes the Neon Auth client.
